@@ -4,10 +4,12 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert(" Capitalised", "Done");
   };
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert(" To lowercase", "Done");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -16,6 +18,7 @@ export default function TextForm(props) {
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert(" All clear", "Done");
   };
   const CapFClick = () => {
     let CapitalizeWords = text[0].toUpperCase();
@@ -38,6 +41,7 @@ export default function TextForm(props) {
     speech.rate = 1;
     speech.pitch = 1;
     window.speechSynthesis.speak(speech);
+    props.showAlert(" Am Speaking...", "Listen");
   }
 
   const [text, setText] = useState("");
@@ -89,7 +93,7 @@ export default function TextForm(props) {
         <p>
           {text.split(" ").length - 1} words and {text.length} characters
         </p>
-        <h2>preview</h2>
+        <h2>Preview</h2>
         <p>{text.length > 0 ? text : "Enter your text in box to preview"}</p>
       </div>
     </>
